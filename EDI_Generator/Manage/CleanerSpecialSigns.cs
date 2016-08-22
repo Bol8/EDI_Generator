@@ -21,13 +21,28 @@ namespace EDI_Generator.Manage
                 {
                     sb.Append(c);
                 }
-               
             }
-            return sb.ToString();
 
+            return sb.ToString();
 
         }
 
+
+        public static string CleanNumbers(string number)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            foreach (char c in number)
+            {
+                if (!c.Equals('?') && !c.Equals(':') && !c.Equals('\'')  && !c.Equals('+'))
+                {
+                    sb.Append(c);
+                }
+            }
+
+            return sb.ToString();
+            
+        }
 
     }
 }
