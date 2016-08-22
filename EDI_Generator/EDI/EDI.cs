@@ -4,7 +4,7 @@ namespace EDI_Generator.EDI
 {
     public abstract class EDI
     {
-        public string Mensaje { get; protected set; }
+        protected string Mensaje { get; set; }
         public List<Segments.SegmentoEDI> Segmentos { get; protected set; }
 
     }
