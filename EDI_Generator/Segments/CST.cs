@@ -25,6 +25,7 @@ namespace EDI_Generator.Segments
         /// <summary>
         /// Constructor que monta un Codificación aduanera.
         /// </summary>
+        /// <param name="numeroDePartida1496"></param>
         /// <param name="codigoIdentificacionAduanera"></param>
         public CST(string numeroDePartida1496 ,CodigoIdentificacionAduanera codigoIdentificacionAduanera)
             : base("CST")
@@ -56,7 +57,7 @@ namespace EDI_Generator.Segments
         }
 
 
-        protected override string montaSegmento()
+        protected sealed override string montaSegmento()
         {
             var cadena = _idSEgmento;
             cadena += _1496_NumeroArticuloMercancia();
