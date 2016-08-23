@@ -8,18 +8,18 @@ namespace EDI_Generator.Segments.AuxClass
 {
     public class ValorAmplitud
     {
-        public string CalificadorUnidadMedida { get; private set; }
-        public string ValorMedida { get; private set; }
-        public string AmplitudMinima { get; private set; }
-        public string AmplitudMaxima { get; private set; }
+        public string CalificadorUnidadMedida_6411 { get; private set; }
+        public string ValorMedida_6314 { get; private set; }
+        public string AmplitudMinima_6162 { get; private set; }
+        public string AmplitudMaxima_6152 { get; private set; }
 
 
-        public ValorAmplitud(string calificadorUnidadMedida, string valorMedida, string amplitudMinima, string amplitudMaxima)
+        public ValorAmplitud(string calificadorUnidadMedida6411, string valorMedida6314, string amplitudMinima6162, string amplitudMaxima6152)
         {
-            CalificadorUnidadMedida = calificadorUnidadMedida;
-            ValorMedida = valorMedida;
-            AmplitudMinima = amplitudMinima;
-            AmplitudMaxima = amplitudMaxima;
+            CalificadorUnidadMedida_6411 = calificadorUnidadMedida6411;
+            ValorMedida_6314 = valorMedida6314;
+            AmplitudMinima_6162 = amplitudMinima6162;
+            AmplitudMaxima_6152 = amplitudMaxima6152;
         }
     }
 }

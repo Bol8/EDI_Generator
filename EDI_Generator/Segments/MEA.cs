@@ -12,20 +12,20 @@ namespace EDI_Generator.Segments
         private readonly string _calificadorAplicacionMedida_6311;
 
         //C502 INFORMACIÓN DE MEDIDAS
-        private readonly InformacionMedidas _informacionMedidas;
+        private readonly InformacionMedidas _informacionMedidas_C502;
 
         //C174 VALOR/AMPLITUD
-        private readonly ValorAmplitud _valorAmplitud;
+        private readonly ValorAmplitud _valorAmplitud_C174;
+
+        private readonly string _indicadorSuperficie_7383;
 
 
-        private readonly string _indicadorSuperficie;
-
-        public MEA(string calificadorAplicacionMedida6311,InformacionMedidas informacionMedidas, ValorAmplitud valorAmplitud, string indicadorSuperficie) 
+        public MEA(string calificadorAplicacionMedida6311,InformacionMedidas informacionMedidasC502, ValorAmplitud valorAmplitudC174, string indicadorSuperficie7383) 
             : base("MEA")
         {
-            _informacionMedidas = informacionMedidas;
-            _valorAmplitud = valorAmplitud;
-            _indicadorSuperficie = indicadorSuperficie;
+            _informacionMedidas_C502 = informacionMedidasC502;
+            _valorAmplitud_C174 = valorAmplitudC174;
+            _indicadorSuperficie_7383 = indicadorSuperficie7383;
             _calificadorAplicacionMedida_6311 = calificadorAplicacionMedida6311;
 
             Segmento = montaSegmento();
@@ -60,9 +60,9 @@ namespace EDI_Generator.Segments
 
         private string C502_InformacionMedias()
         {
-            var cadena = unirElementos(":", _informacionMedidas.DimensionMedidaCodificada,
-                                            _informacionMedidas.SignificadoMedidasCodificada,
-                                            _informacionMedidas.AtributoMedidasCodificada);
+            var cadena = unirElementos(":", _informacionMedidas_C502.DimensionMedidaCodificada_6313,
+                                            _informacionMedidas_C502.SignificadoMedidasCodificada_6321,
+                                            _informacionMedidas_C502.AtributoMedidasCodificada_6155);
 
 
             return "+" + cadena;
@@ -71,10 +71,10 @@ namespace EDI_Generator.Segments
 
         private string C174_ValorAmplitud()
         {
-            var cadena = unirElementos(":", _valorAmplitud.CalificadorUnidadMedida,
-                                            _valorAmplitud.ValorMedida,
-                                            _valorAmplitud.AmplitudMinima,
-                                            _valorAmplitud.AmplitudMaxima);
+            var cadena = unirElementos(":", _valorAmplitud_C174.CalificadorUnidadMedida_6411,
+                                            _valorAmplitud_C174.ValorMedida_6314,
+                                            _valorAmplitud_C174.AmplitudMinima_6162,
+                                            _valorAmplitud_C174.AmplitudMaxima_6152);
 
             return "+" + cadena;
         }
@@ -82,7 +82,7 @@ namespace EDI_Generator.Segments
 
         private string _7383_IndicadorSuperficie()
         {
-            return "+" + _indicadorSuperficie;
+            return "+" + _indicadorSuperficie_7383;
         }
 
         protected override string cerrarSegmento()

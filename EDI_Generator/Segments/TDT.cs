@@ -13,38 +13,38 @@ namespace EDI_Generator.Segments
         private readonly string _numeroRefTRansporte_8028;
 
         //C220 MODO DE TRANSPORTE
-        private readonly ModoTransporte _modoTransporte;
+        private readonly ModoTransporte _modoTransporte_C220;
 
         //C228 MEDIO DE TRANSPORTE
-        private readonly MedioTransporte _medioTransporte;
+        private readonly MedioTransporte _medioTransporte_C228;
 
         //C040 TRANSPORTISTA
-        private readonly Transportista _transportista;
+        private readonly Transportista _transportista_C040;
 
         private readonly string _direccionTransportistaCodificada_8101;
 
 
         //C401 INFORMACIÓN EXCESO CARGA TRANSPORTE
-        private readonly InfoExcesoCargaTransporte _infoExcesoCargaTransporte;
+        private readonly InfoExcesoCargaTransporte _infoExcesoCargaTransporte_C401;
 
         //C222 IDENTIFICACIÓN DE TRANSPORTE
-        private readonly IdentificacionTransporte _identificacionTransporte;
+        private readonly IdentificacionTransporte _identificacionTransporte_C222;
 
 
 
-        public TDT(string calificadorRutaTransporte8051, string numeroRefTRansporte8028, ModoTransporte modoTransporte,
-                   MedioTransporte medioTransporte, Transportista transportista, string direccionTransportistaCodificada8101,
-                   InfoExcesoCargaTransporte infoExcesoCargaTransporte, IdentificacionTransporte identificacionTransporte)
+        public TDT(string calificadorRutaTransporte8051, string numeroRefTRansporte8028, ModoTransporte modoTransporteC220,
+                   MedioTransporte medioTransporteC228, Transportista transportistaC040, string direccionTransportistaCodificada8101,
+                   InfoExcesoCargaTransporte infoExcesoCargaTransporteC401, IdentificacionTransporte identificacionTransporteC222)
             : base("TDT")
         {
             _calificadorRutaTransporte_8051 = calificadorRutaTransporte8051;
             _numeroRefTRansporte_8028 = numeroRefTRansporte8028;
-            _modoTransporte = modoTransporte;
-            _medioTransporte = medioTransporte;
-            _transportista = transportista;
+            _modoTransporte_C220 = modoTransporteC220;
+            _medioTransporte_C228 = medioTransporteC228;
+            _transportista_C040 = transportistaC040;
             _direccionTransportistaCodificada_8101 = direccionTransportistaCodificada8101;
-            _infoExcesoCargaTransporte = infoExcesoCargaTransporte;
-            _identificacionTransporte = identificacionTransporte;
+            _infoExcesoCargaTransporte_C401 = infoExcesoCargaTransporteC401;
+            _identificacionTransporte_C222 = identificacionTransporteC222;
 
             Segmento = montaSegmento();
         }
@@ -88,10 +88,10 @@ namespace EDI_Generator.Segments
         {
             var cadena = "";
 
-            if (_modoTransporte != null)
+            if (_modoTransporte_C220 != null)
             {
-                cadena = unirElementos(":", _modoTransporte.ModoTransporteCodificado,
-                                            _modoTransporte.ModoDeTransporte);
+                cadena = unirElementos(":", _modoTransporte_C220.ModoTransporteCodificado_8067,
+                                            _modoTransporte_C220.ModoDeTransporte_8066);
             }
 
             return "+" + cadena;
@@ -101,10 +101,10 @@ namespace EDI_Generator.Segments
         {
             var cadena = "";
 
-            if (_medioTransporte != null)
+            if (_medioTransporte_C228 != null)
             {
-               cadena = unirElementos(":", _medioTransporte.IdTipoMedioTransporte,
-                                           _medioTransporte.TipoMedioTransporte);
+               cadena = unirElementos(":", _medioTransporte_C228.IdTipoMedioTransporte_8179,
+                                           _medioTransporte_C228.TipoMedioTransporte_8178);
             }
 
             return cadena;
@@ -114,12 +114,12 @@ namespace EDI_Generator.Segments
         {
             var cadena = "";
 
-            if (_transportista != null)
+            if (_transportista_C040 != null)
             {
-                cadena = unirElementos(":", _transportista.TrasnportistaCodificado,
-                                           _transportista.IdListaCodigosCodificado,
-                                           _transportista.AgenciaResponsableListaCodigosCodificada,
-                                           _transportista.NombreTransportista);
+                cadena = unirElementos(":", _transportista_C040.TransportistaCodificado_3127,
+                                           _transportista_C040.IdListaCodigosCodificado_1131,
+                                           _transportista_C040.AgenciaResponsableListaCodigosCodificada_3055,
+                                           _transportista_C040.NombreTransportista_3128);
             }
 
             return "+" + cadena;
@@ -135,11 +135,11 @@ namespace EDI_Generator.Segments
         {
             var cadena = "";
 
-            if (_infoExcesoCargaTransporte != null)
+            if (_infoExcesoCargaTransporte_C401 != null)
             {
-                cadena = unirElementos(":", _infoExcesoCargaTransporte.RazonExcesoCargaCodificado,
-                                            _infoExcesoCargaTransporte.ResponsabilidadExcesoCargaCodificada,
-                                            _infoExcesoCargaTransporte.NumeroAutorizacionCliente);
+                cadena = unirElementos(":", _infoExcesoCargaTransporte_C401.RazonExcesoCargaCodificado_8457,
+                                            _infoExcesoCargaTransporte_C401.ResponsabilidadExcesoCargaCodificada_8459,
+                                            _infoExcesoCargaTransporte_C401.NumeroAutorizacionCliente_7130);
             }
 
             return "+" + cadena;
@@ -149,13 +149,13 @@ namespace EDI_Generator.Segments
         {
             var cadena = "";
 
-            if (_identificacionTransporte != null)
+            if (_identificacionTransporte_C222 != null)
             {
-                cadena = unirElementos(":", _identificacionTransporte.IdMedioTransporteCodificado,
-                                            _identificacionTransporte.IdListaCodigosCodificado,
-                                            _identificacionTransporte.AgenciaResponsableListaCodigosCodificada,
-                                            _identificacionTransporte.IdMedioTransporte,
-                                            _identificacionTransporte.NacionalidadMedioTransporteCodificada);
+                cadena = unirElementos(":", _identificacionTransporte_C222.IdMedioTransporteCodificado_8213,
+                                            _identificacionTransporte_C222.IdListaCodigosCodificado_1131,
+                                            _identificacionTransporte_C222.AgenciaResponsableListaCodigosCodificada_3055,
+                                            _identificacionTransporte_C222.IdMedioTransporte_8212,
+                                            _identificacionTransporte_C222.NacionalidadMedioTransporteCodificada_8453);
             }
 
             return "+" + cadena;

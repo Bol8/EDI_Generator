@@ -9,13 +9,13 @@ namespace EDI_Generator.Segments.AuxClass
     class ModoTransporte
     {
        
-        public string ModoTransporteCodificado { get; private set; }
-        public string ModoDeTransporte { get; private set; }
+        public string ModoTransporteCodificado_8067 { get; private set; }
+        public string ModoDeTransporte_8066 { get; private set; }
 
-        public ModoTransporte(string modoTransporteCodificado, string modoDeTransporte)
+        public ModoTransporte(string modoTransporteCodificado8067, string modoDeTransporte8066)
         {
-            ModoTransporteCodificado = modoTransporteCodificado;
-            ModoDeTransporte = modoDeTransporte;
+            ModoTransporteCodificado_8067 = modoTransporteCodificado8067;
+            ModoDeTransporte_8066 = modoDeTransporte8066;
         }
 
     }

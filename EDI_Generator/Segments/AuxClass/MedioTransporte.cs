@@ -8,13 +8,13 @@ namespace EDI_Generator.Segments.AuxClass
 {
     public class MedioTransporte
     {
-        public string IdTipoMedioTransporte { get; private set; }
-        public string TipoMedioTransporte { get; private set; }
+        public string IdTipoMedioTransporte_8179 { get; private set; }
+        public string TipoMedioTransporte_8178 { get; private set; }
 
-        public MedioTransporte(string idTipoMedioTransporte, string tipoMedioTransporte)
+        public MedioTransporte(string idTipoMedioTransporte8179, string tipoMedioTransporte8178)
         {
-            IdTipoMedioTransporte = idTipoMedioTransporte;
-            TipoMedioTransporte = tipoMedioTransporte;
+            IdTipoMedioTransporte_8179 = idTipoMedioTransporte8179;
+            TipoMedioTransporte_8178 = tipoMedioTransporte8178;
         }
     }
 }
