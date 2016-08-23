@@ -10,13 +10,13 @@ namespace EDI_Generator.Segments
     internal class CNT:SegmentoEDI
     {
         //C270 CONTROL
-        private readonly ControlDeTotales _controlDeTotales;
+        private readonly ControlDeTotales _controlDeTotales_C270;
 
 
-        public CNT(ControlDeTotales controlDeTotales) 
+        public CNT(ControlDeTotales controlDeTotalesC270) 
             : base("CNT")
         {
-            _controlDeTotales = controlDeTotales;
+            _controlDeTotales_C270 = controlDeTotalesC270;
 
             Segmento = montaSegmento();
         }
@@ -26,7 +26,7 @@ namespace EDI_Generator.Segments
             return Segmento;
         }
 
-        protected override string montaSegmento()
+        protected sealed override string montaSegmento()
         {
             var cadena = _idSEgmento;
             cadena += C270_Control();
@@ -39,11 +39,11 @@ namespace EDI_Generator.Segments
         {
             var cadena = "";
 
-            if (_controlDeTotales != null)
+            if (_controlDeTotales_C270 != null)
             {
-                cadena = unirElementos(":", _controlDeTotales.CalificadorDeControl,
-                                            _controlDeTotales.ValorDeControl,
-                                            _controlDeTotales.CalificadorUnidadDeMedida);
+                cadena = unirElementos(":", _controlDeTotales_C270.CalificadorDeControl_6069,
+                                            _controlDeTotales_C270.ValorDeControl_6066,
+                                            _controlDeTotales_C270.CalificadorUnidadDeMedida_6411);
             }
 
             return "+" + cadena;

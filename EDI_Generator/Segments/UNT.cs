@@ -13,11 +13,11 @@ namespace EDI_Generator.Segments
 
 
 
-        public UNT(string numeroSegmentosMensaje,string numeroReferenciaMensaje) 
+        public UNT(string numeroSegmentosMensaje0074,string numeroReferenciaMensaje0062) 
             : base("UNT")
         {
-            _numeroSegementosMensaje_0074 = numeroSegmentosMensaje;
-            _numeroReferenciaMensaje_0062 = numeroReferenciaMensaje;
+            _numeroSegementosMensaje_0074 = numeroSegmentosMensaje0074;
+            _numeroReferenciaMensaje_0062 = numeroReferenciaMensaje0062;
 
             Segmento = montaSegmento();
         }

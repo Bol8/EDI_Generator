@@ -13,15 +13,16 @@ namespace EDI_Generator.Segments
         private readonly string _metodoPagoCargosTrasnporte_4215;
 
         //C100 PLAZOS ENTREGA
-        private readonly PlazoEntrega _plazoEntrega;
+        private readonly PlazoEntrega _plazoEntrega_C100;
 
 
-        public TOD(string codigoFuncionPlazoEntrega4055, string metodoPagoCargosTrasnporte4215, PlazoEntrega plazoEntrega) 
+        public TOD(string codigoFuncionPlazoEntrega4055, string metodoPagoCargosTrasnporte4215,
+                   PlazoEntrega plazoEntregaC100) 
             : base("TOD")
         {
             _codigoFuncionPlazoEntrega_4055 = codigoFuncionPlazoEntrega4055;
             _metodoPagoCargosTrasnporte_4215 = metodoPagoCargosTrasnporte4215;
-            _plazoEntrega = plazoEntrega;
+            _plazoEntrega_C100 = plazoEntregaC100;
 
             Segmento = montaSegmento();
         }
@@ -56,13 +57,13 @@ namespace EDI_Generator.Segments
         {
             var cadena = "";
 
-            if (_plazoEntrega != null)
+            if (_plazoEntrega_C100 != null)
             {
-                cadena = unirElementos(":", _plazoEntrega.PlazoEntregaCodificado,
-                                            _plazoEntrega.IdListaCodigosCodificado,
-                                            _plazoEntrega.AgenciaResponsableListaCodigos,
-                                            _plazoEntrega.PlazoEntrega1,
-                                            _plazoEntrega.PlazoEntrega2);
+                cadena = unirElementos(":", _plazoEntrega_C100.PlazoEntregaCodificado_4053,
+                                            _plazoEntrega_C100.IdListaCodigosCodificado_1131,
+                                            _plazoEntrega_C100.AgenciaResponsableListaCodigos_3055,
+                                            _plazoEntrega_C100.PlazoEntrega1_4052,
+                                            _plazoEntrega_C100.PlazoEntrega2_4052);
             }
 
             return "+" + cadena;
