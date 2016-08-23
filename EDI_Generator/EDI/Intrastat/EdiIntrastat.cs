@@ -68,8 +68,6 @@ namespace EDI_Generator.EDI.Intrastat
 
         protected void montarUnb(string idEmisor,string ReferenciaControlIntercambio_0020,bool indicadorPrueba)
         {
-           // var fehcaEmision = DateTime.Now.ToString("yy-MM-dd");
-
             var Unb = new UNB(new IdentificadorDeSintaxis(_identificadorSintaxis_0001, _numeroVersionSintaxis_0002),
                               new EmisorDelIntercambio(idEmisor, _codCalificadorIdentificacionParticipante_0007,null),
                               new ReceptorDelIntercambio(_idReceptor_0010, _codCalificadorIdentificacionParticipante_0007,null),

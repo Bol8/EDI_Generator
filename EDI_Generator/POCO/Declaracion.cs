@@ -15,6 +15,8 @@ namespace EDI_Generator.POCO
         public string FechaHoraPeriodo { get; set; }
         public string NombreEntidad { get; set; }
         public string ImporteMonetario { get; set; }
+        public string Flujo { get; set; }
+        public string NumeroDeclaracion { get; set; }
 
 
       //  public string ValorControl { get; set; }

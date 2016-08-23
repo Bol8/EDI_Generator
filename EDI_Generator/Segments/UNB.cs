@@ -46,13 +46,13 @@ namespace EDI_Generator.Segments
         /// <param name="claveReferenciaReceptorS005"></param>
         /// <param name="referenciaAplicacion0026"></param>
         /// <param name="codigoPrioridadProcesado0029"></param>
-        /// <param name="solicitudDeAcuseDeReibo0031"></param>
+        /// <param name="solicitudDeAcuseDeRecibo0031"></param>
         /// <param name="identificacionAcuerdoComunicaciones0032"></param>
         /// <param name="indicadorPrueba"></param>
         public UNB(IdentificadorDeSintaxis identificadorDeSintaxisS001, EmisorDelIntercambio emisorDelIntercambioS002,
                    ReceptorDelIntercambio receptorDelIntercambioS003, string referenciaIntercambio0020,
                    ClaveReferenciaReceptor claveReferenciaReceptorS005,string referenciaAplicacion0026,string codigoPrioridadProcesado0029,
-                   string solicitudDeAcuseDeReibo0031,string identificacionAcuerdoComunicaciones0032,
+                   string solicitudDeAcuseDeRecibo0031,string identificacionAcuerdoComunicaciones0032,
                    bool indicadorPrueba)
             : base("UNB")
         {
@@ -63,7 +63,7 @@ namespace EDI_Generator.Segments
             _claveReferenciaReceptor_S005 = claveReferenciaReceptorS005;
             _referenciaAplicacion_0026 = referenciaAplicacion0026;
             _codigoPrioridadProcesado_0029 = codigoPrioridadProcesado0029;
-            _solicitudDeAcuseDeRecibo_0031 = solicitudDeAcuseDeReibo0031;
+            _solicitudDeAcuseDeRecibo_0031 = solicitudDeAcuseDeRecibo0031;
             _idAcuerdoComunicaciones_0032 = identificacionAcuerdoComunicaciones0032;
             _indicadorPrueba = indicadorPrueba;
 

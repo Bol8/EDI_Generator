@@ -44,6 +44,7 @@
     <Compile Include="EDI\EDI.cs" />
     <Compile Include="EDI\Intrastat\EdiIntrastat.cs" />
     <Compile Include="EDI\Intrastat\INTRASTAT_CUSDESC.cs" />
+    <Compile Include="Gestion\CusdecIntrastatSinOperaciones.cs" />
     <Compile Include="Gestion\CusdescIntrastat.cs" />
     <Compile Include="Interfaces\ISegmentoService.cs" />
     <Compile Include="Manage\CleanerSpecialSigns.cs" />
