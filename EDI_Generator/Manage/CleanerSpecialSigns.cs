@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EDI_Generator.Manage
 {
-    class CleanerSpecialSigns
+    static class CleanerSpecialSigns
     {
        // private 
 

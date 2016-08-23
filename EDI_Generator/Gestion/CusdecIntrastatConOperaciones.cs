@@ -3,19 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using EDI_Generator.EDI.Intrastat;
 using EDI_Generator.POCO;
+using EDI_Generator.Segments.AuxClass;
+using EDI_Generator.EDI.Intrastat;
 
 namespace EDI_Generator.Gestion
 {
-    public class CusdecIntrastatSinOperaciones : EDI.Intrastat.CusdecIntrastat
+    public class CusdecIntrastatConOperaciones:CusdecIntrastat
     {
-
-
-
         private readonly Declaracion _declaracion;
 
-        public CusdecIntrastatSinOperaciones(Declaracion declaracion)
+        public CusdecIntrastatConOperaciones(Declaracion declaracion)
         {
             _declaracion = declaracion;
             MontarMensaje();
@@ -37,6 +35,7 @@ namespace EDI_Generator.Gestion
             Moa_EspecificarMoneda();
             Moa_EspecificarImporteTotal();
             Uns_CerrarCabeceraMensaje();
+            Cst_EspecificarPartidas();
             Uns_CerrarDetalleMensaje();
             Cnt_EspecificarTotalPartidas();
             Cnt_EspecificarPesoTotalMercancias();
@@ -47,8 +46,18 @@ namespace EDI_Generator.Gestion
             MontarUnz(_declaracion.ReferenciaControlIntercambio);
         }
 
+        private void Cst_EspecificarPartidas()
+        {
+            if (_declaracion.Partidas.Any())
+            {
+                foreach (var partida in _declaracion.Partidas)
+                {
+                      MontarCstPartidas(partida.IdPartida,partida.Mercancia,"112","1","10");  
+                }
+            }
+        }
 
-       
+
         private string CrearNumeroDocumento()
         {
             var sb = new StringBuilder();

@@ -17,6 +17,7 @@ namespace EDI_Generator.POCO
         public string ImporteMonetario { get; set; }
         public string Flujo { get; set; }
         public string NumeroDeclaracion { get; set; }
+        public List<Partida> Partidas { get; set; }
 
 
       //  public string ValorControl { get; set; }

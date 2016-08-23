@@ -42,13 +42,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EDI\EDI.cs" />
-    <Compile Include="EDI\Intrastat\EdiIntrastat.cs" />
+    <Compile Include="EDI\Intrastat\CusdecIntrastat.cs" />
     <Compile Include="EDI\Intrastat\INTRASTAT_CUSDESC.cs" />
+    <Compile Include="Gestion\CusdecIntrastatConOperaciones.cs" />
     <Compile Include="Gestion\CusdecIntrastatSinOperaciones.cs" />
-    <Compile Include="Gestion\CusdescIntrastat.cs" />
+    <Compile Include="Gestion\EdiCusdecIntrastat.cs" />
     <Compile Include="Interfaces\ISegmentoService.cs" />
     <Compile Include="Manage\CleanerSpecialSigns.cs" />
     <Compile Include="POCO\Declaracion.cs" />
+    <Compile Include="POCO\Partida.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Segments\AuxClass\ClaveReferenciaReceptor.cs" />

@@ -26,14 +26,23 @@ namespace EDI_Generator
                 FechaHoraPeriodo = "2005",
                 NombreEntidad = "@¿¿''''INTRO+++DUCT,,,,ORES MERC@ANC:::ÍAS?? S.A",
                 Flujo = "A",
-                NumeroDeclaracion = "10000022"
+                NumeroDeclaracion = "10000022",
+                Partidas = new List<Partida>()
+                {
+                    new Partida() {IdPartida = "1",Mercancia = "00001111",TotalPeso = "60.00",TotalPrecio = "120.00" },
+                    new Partida() {IdPartida = "1",Mercancia = "00001111",TotalPeso = "60.00",TotalPrecio = "120.00" },
+                    new Partida() {IdPartida = "1",Mercancia = "00001111",TotalPeso = "60.00",TotalPrecio = "120.00" },
+                    new Partida() {IdPartida = "1",Mercancia = "00001111",TotalPeso = "60.00",TotalPrecio = "120.00" },
+                    new Partida() {IdPartida = "1",Mercancia = "00001111",TotalPeso = "60.00",TotalPrecio = "120.00" }
+                }
+
             };
 
             CleanerSpecialSigns.Cleaner(declaration.NombreEntidad);
 
 
-            var EdiIntrastat = new CusdescIntrastat(declaration);
-            var CusdecIntrastatSinOperaciones = new CusdecIntrastatSinOperaciones(declaration);
+            var EdiIntrastat = new EdiCusdecIntrastat(declaration);
+            var CusdecIntrastatSinOperaciones = new CusdecIntrastatConOperaciones(declaration);
 
             foreach (var segmento in CusdecIntrastatSinOperaciones.Segmentos.ToList())
             {
