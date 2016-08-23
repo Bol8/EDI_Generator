@@ -69,7 +69,7 @@ namespace EDI_Generator.Segments
                                             _identificadorDelMensaje_S009.NumeroVersionTipoMensaje_0052,
                                             _identificadorDelMensaje_S009.NumeroPublicacionTipoMensaje_0054,
                                             _identificadorDelMensaje_S009.AgenciaControladora_0051,
-                                            _identificadorDelMensaje_S009.CodigoAsignadoDeAsociacion);
+                                            _identificadorDelMensaje_S009.CodigoAsignadoDeAsociacion_0057);
             }
 
             return "+" + cadena;
