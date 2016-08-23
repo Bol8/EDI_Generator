@@ -3,29 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EDI_Generator.Segments.AuxClass;
 
 namespace EDI_Generator.Segments
 {
     internal class DTM:SegmentoEDI
     {
         //C507 FECHA/HORA/PERIODO
-        private readonly string _calificadorFecha_2005;
-        private readonly string _fecha_2380;
-        private readonly string _calificadorFormatoFecha_2379;
+        private readonly FechaHoraPeriodo _fechaHoraPeriodo_C507;
+       
 
-
-        public DTM(string calificadorFecha,string fecha,string calificadorFormatoFecha) 
+        public DTM(FechaHoraPeriodo fechaHoraPeriodoC507) 
             : base("DTM")
         {
-            _calificadorFecha_2005 = calificadorFecha;
-            _fecha_2380 = fecha;
-            _calificadorFormatoFecha_2379 = calificadorFormatoFecha;
+            _fechaHoraPeriodo_C507 = fechaHoraPeriodoC507;
 
             Segmento = montaSegmento();
         }
 
 
-        protected override string montaSegmento()
+        protected sealed override string montaSegmento()
         {
             var cadena = _idSEgmento;
             cadena += C507_FechaHoraPeriodo();
@@ -37,10 +34,15 @@ namespace EDI_Generator.Segments
 
         private string C507_FechaHoraPeriodo()
         {
-            var cadena = _calificadorFecha_2005;
+            var cadena = "";
 
-            if (!string.IsNullOrEmpty(_fecha_2380)) cadena += ":" + _fecha_2380;
-            if (!string.IsNullOrEmpty(_calificadorFormatoFecha_2379)) cadena += ":" + _calificadorFormatoFecha_2379;
+            if (_fechaHoraPeriodo_C507 != null)
+            {
+                cadena = unirElementos(":", _fechaHoraPeriodo_C507.CalificadorFechaHora_2005,
+                                            _fechaHoraPeriodo_C507.FechaHora_2380,
+                                            _fechaHoraPeriodo_C507.CalificadorFormatoFechaHora_2379);
+            }
+          
            
             return "+" + cadena;
         }

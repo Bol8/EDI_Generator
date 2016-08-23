@@ -56,11 +56,13 @@
     <Compile Include="Segments\AuxClass\DocumentoDelMensaje.cs" />
     <Compile Include="Segments\AuxClass\EmisorDelIntercambio.cs" />
     <Compile Include="Segments\AuxClass\EstadoTransferencia.cs" />
+    <Compile Include="Segments\AuxClass\FechaHoraPeriodo.cs" />
     <Compile Include="Segments\AuxClass\IdentificacionDeLaParte.cs" />
     <Compile Include="Segments\AuxClass\IdentificacionLugar.cs" />
     <Compile Include="Segments\AuxClass\IdentificacionTransporte.cs" />
     <Compile Include="Segments\AuxClass\IdentificadorDelMensaje.cs" />
     <Compile Include="Segments\AuxClass\IdentificadorDeSintaxis.cs" />
+    <Compile Include="Segments\AuxClass\IndicadorDeProceso.cs" />
     <Compile Include="Segments\AuxClass\InfoExcesoCargaTransporte.cs" />
     <Compile Include="Segments\AuxClass\InformacionMedidas.cs" />
     <Compile Include="Segments\AuxClass\MedioTransporte.cs" />

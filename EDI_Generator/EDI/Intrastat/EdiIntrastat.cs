@@ -126,7 +126,7 @@ namespace EDI_Generator.EDI.Intrastat
 
         protected void montarDtm(string calificadorFecha_2005,string FechaHora)
         {
-            var Dtm = new DTM(calificadorFecha_2005,FechaHora,null);
+            var Dtm = new DTM(new FechaHoraPeriodo(calificadorFecha_2005, FechaHora, null));
 
             Segmentos.Add(Dtm);
             Mensaje += Dtm.getSegmento();
@@ -135,8 +135,8 @@ namespace EDI_Generator.EDI.Intrastat
 
         protected void montarGis(string indicadorProcesoCodificado_7365,string calificadorListaCodigosCodificado_1131)
         {
-            var Dtm = new GIS(indicadorProcesoCodificado_7365,calificadorListaCodigosCodificado_1131,
-                              null,null);
+            var Dtm = new GIS(new IndicadorDeProceso(indicadorProcesoCodificado_7365, calificadorListaCodigosCodificado_1131,
+                              null, null));
 
             Segmentos.Add(Dtm);
             Mensaje += Dtm.getSegmento();
