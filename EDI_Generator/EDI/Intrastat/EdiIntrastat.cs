@@ -66,7 +66,7 @@ namespace EDI_Generator.EDI.Intrastat
         }
 
 
-        protected void montarUnb(string idEmisor,string ReferenciaControlIntercambio_0020,bool indicadorPrueba)
+        internal void montarUnb(string idEmisor,string ReferenciaControlIntercambio_0020,bool indicadorPrueba)
         {
             var Unb = new UNB(new IdentificadorDeSintaxis(_identificadorSintaxis_0001, _numeroVersionSintaxis_0002),
                               new EmisorDelIntercambio(idEmisor, _codCalificadorIdentificacionParticipante_0007,null),
