@@ -25,7 +25,7 @@ namespace EDI_Generator.Segments
             return Segmento;
         }
 
-        protected override string montaSegmento()
+        protected sealed override string montaSegmento()
         {
             var cadena = _idSEgmento;
             cadena += _0081_IdentificacionSeccion();

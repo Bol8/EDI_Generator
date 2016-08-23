@@ -14,7 +14,7 @@ namespace EDI_Generator.Segments
         private readonly string _numeroDePartida_1496;
 
         //C246 CÓDIGOS DE IDENTIFICACIÓN ADUANERA
-        private readonly CodigoIdentificacionAduanera _codigoIdentificacionAduanera;
+        private readonly CodigoIdentificacionAduanera _codigoIdentificacionAduanera_C246;
 
         private readonly CodigoIdentificacionAduanera _codigoIdentificacionAduanera2;
         private readonly CodigoIdentificacionAduanera _codigoIdentificacionAduanera3;
@@ -23,31 +23,30 @@ namespace EDI_Generator.Segments
 
 
         /// <summary>
-        /// Constructor que monta un Codificación aduanera.
+        /// Constructor que monta el segmento CST.
         /// </summary>
         /// <param name="numeroDePartida1496"></param>
-        /// <param name="codigoIdentificacionAduanera"></param>
-        public CST(string numeroDePartida1496 ,CodigoIdentificacionAduanera codigoIdentificacionAduanera)
+        /// <param name="codigoIdentificacionAduaneraC246"></param>
+        public CST(string numeroDePartida1496 ,CodigoIdentificacionAduanera codigoIdentificacionAduaneraC246)
             : base("CST")
         {
             _numeroDePartida_1496 = numeroDePartida1496;
-            _codigoIdentificacionAduanera = codigoIdentificacionAduanera;
+            _codigoIdentificacionAduanera_C246 = codigoIdentificacionAduaneraC246;
 
             Segmento = montaSegmento();
         }
 
 
         /// <summary>
-        /// Constructor que monta hasta un máximo de 5 Codificaciones aduaneras
+        /// Constructor que monta el segmento CST con un máximo de 5 Codificaciones aduaneras
         /// </summary>
-        /// <param name="listCodigoIdentificacionAduaneras"></param>
-        public CST(string numeroDePartida1496,CodigoIdentificacionAduanera codigoIdentificacionAduanera, CodigoIdentificacionAduanera codigoIdentificacionAduanera2,
+        public CST(string numeroDePartida1496,CodigoIdentificacionAduanera codigoIdentificacionAduaneraC246, CodigoIdentificacionAduanera codigoIdentificacionAduanera2,
                    CodigoIdentificacionAduanera codigoIdentificacionAduanera3, CodigoIdentificacionAduanera codigoIdentificacionAduanera4,
                    CodigoIdentificacionAduanera codigoIdentificacionAduanera5) 
             : base("CST")
         {
             _numeroDePartida_1496 = numeroDePartida1496;
-            _codigoIdentificacionAduanera = codigoIdentificacionAduanera;
+            _codigoIdentificacionAduanera_C246 = codigoIdentificacionAduaneraC246;
             _codigoIdentificacionAduanera2 = codigoIdentificacionAduanera2;
             _codigoIdentificacionAduanera3 = codigoIdentificacionAduanera3;
             _codigoIdentificacionAduanera4 = codigoIdentificacionAduanera4;
@@ -61,7 +60,7 @@ namespace EDI_Generator.Segments
         {
             var cadena = _idSEgmento;
             cadena += _1496_NumeroArticuloMercancia();
-            cadena += C246_CodificacionAduanera(_codigoIdentificacionAduanera);
+            cadena += C246_CodificacionAduanera(_codigoIdentificacionAduanera_C246);
             cadena += C246_CodificacionAduanera(_codigoIdentificacionAduanera2);
             cadena += C246_CodificacionAduanera(_codigoIdentificacionAduanera3);
             cadena += C246_CodificacionAduanera(_codigoIdentificacionAduanera4);
@@ -78,14 +77,9 @@ namespace EDI_Generator.Segments
 
             if (codigoIdentificacion != null)
             {
-                if (!string.IsNullOrEmpty(codigoIdentificacion.codigoIdentificacionAduanera))
-                    cadena = codigoIdentificacion.codigoIdentificacionAduanera;
-
-                if (!string.IsNullOrEmpty(codigoIdentificacion.calificadorListaCodigos))
-                    cadena += ":" + codigoIdentificacion.calificadorListaCodigos;
-
-                if (!string.IsNullOrEmpty(codigoIdentificacion.agenciaResponsableListaCodigos))
-                    cadena += ":" + codigoIdentificacion.agenciaResponsableListaCodigos;
+                cadena = unirElementos(":", codigoIdentificacion.codigoIdentificacionAduanera_7361,
+                                            codigoIdentificacion.calificadorListaCodigos_1131,
+                                            codigoIdentificacion.agenciaResponsableListaCodigosCodificada_3055);
             }
 
             return "+" + cadena;
@@ -95,10 +89,7 @@ namespace EDI_Generator.Segments
 
         private string _1496_NumeroArticuloMercancia()
         {
-            var cadena = "";
-            if (!string.IsNullOrEmpty(_numeroDePartida_1496)) cadena = _numeroDePartida_1496;
-
-            return "+" + cadena;
+            return "+" + _numeroDePartida_1496;
         }
        
 

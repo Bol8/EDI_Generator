@@ -9,16 +9,13 @@ namespace EDI_Generator.Segments
 {
     internal class NAD : SegmentoEDI
     {
-        protected string _calificadorEntidad_3035;
+        protected string _calificadorEntidad3035;
 
         //C082 IDENTIFICACIÓN DE LA PARTE O ENTIDAD
-        private IdentificacionDeLaParte _identificacionDeLaParte;
-        protected string _idEntidadCodificada_3039;
-        protected string _idListaCodigosCodificado_1131;
-        protected string _agenciaResponsableListaCodigosCodificada_3055;
+        private readonly IdentificacionDeLaParte _identificacionDeLaParte_C082;
 
         //C058 NOMBRE Y DIRECCIÓN
-        protected string _direccion_3124;
+        protected string _direccion3124;
         protected List<string> _listaDirecciones;
 
 
@@ -37,40 +34,22 @@ namespace EDI_Generator.Segments
         protected string _paisCodificado_3207;
 
 
-        //public NAD(string calificadorEntidad, string idEntidadCodificada, string idListaCodigosCodificado,
-        //           string agenciaResponsableListaCodigosCod, string direccion, string nombreEntidad, string calle,
-        //           string nombreCiudad, string subEntidadPais, string codigoPostal, string paisCodificado)
-        //    : base("NAD")
-        //{
-        //    _calificadorEntidad_3035 = calificadorEntidad;
-        //    _idEntidadCodificada_3039 = idEntidadCodificada;
-        //    _idListaCodigosCodificado_1131 = idListaCodigosCodificado;
-        //    _agenciaResponsableListaCodigosCodificada_3055 = agenciaResponsableListaCodigosCod;
-        //    _direccion_3124 = direccion;
-        //    _nombreEntidad_3036 = nombreEntidad;
-        //    _calle_3042 = calle;
-        //    _nombreCiudad_3164 = nombreCiudad;
-        //    _subEntidadPais_3229 = subEntidadPais;
-        //    _codigoPostal_3251 = codigoPostal;
-        //    _paisCodificado_3207 = paisCodificado;
 
-        //    Segmento = montaSegmento();
-        //}
-
-        public NAD(string calificadorEntidad,IdentificacionDeLaParte identificacionDeLaParte, 
-                   string direccion, string nombreEntidad, string calle,
-                  string nombreCiudad, string subEntidadPais, string codigoPostal, string paisCodificado)
+        public NAD(string calificadorEntidad3035,IdentificacionDeLaParte identificacionDeLaParteC082, 
+                   string direccion3124, string nombreEntidad3036, string calle3042,
+                   string nombreCiudad3164, string subEntidadPais3229, string codigoPostal3251,
+                   string paisCodificado3207)
             : base("NAD")
         {
-            _calificadorEntidad_3035 = calificadorEntidad;
-            _identificacionDeLaParte = identificacionDeLaParte;
-            _direccion_3124 = direccion;
-            _nombreEntidad_3036 = nombreEntidad;
-            _calle_3042 = calle;
-            _nombreCiudad_3164 = nombreCiudad;
-            _subEntidadPais_3229 = subEntidadPais;
-            _codigoPostal_3251 = codigoPostal;
-            _paisCodificado_3207 = paisCodificado;
+            _calificadorEntidad3035 = calificadorEntidad3035;
+            _identificacionDeLaParte_C082 = identificacionDeLaParteC082;
+            _direccion3124 = direccion3124;
+            _nombreEntidad_3036 = nombreEntidad3036;
+            _calle_3042 = calle3042;
+            _nombreCiudad_3164 = nombreCiudad3164;
+            _subEntidadPais_3229 = subEntidadPais3229;
+            _codigoPostal_3251 = codigoPostal3251;
+            _paisCodificado_3207 = paisCodificado3207;
 
             Segmento = montaSegmento();
         }
@@ -82,7 +61,7 @@ namespace EDI_Generator.Segments
             return Segmento;
         }
 
-        protected override string montaSegmento()
+        protected sealed override string montaSegmento()
         {
             var cadena = _idSEgmento;
             cadena += _3035_CalificadorDeLaParte();
@@ -101,18 +80,18 @@ namespace EDI_Generator.Segments
 
         private string _3035_CalificadorDeLaParte()
         {
-            return "+" + _calificadorEntidad_3035;
+            return "+" + _calificadorEntidad3035;
         }
 
         private string C082_IdentificacionDeLaParte()
         {
             var cadena = "";
 
-            if (_identificacionDeLaParte != null)
+            if (_identificacionDeLaParte_C082 != null)
             {
-                cadena = unirElementos(":", _identificacionDeLaParte.IdentificacionEntidadCodificada_3039,
-                                            _identificacionDeLaParte.IdentificadorListaCodigosCodificado_1131,
-                                            _identificacionDeLaParte.AgenciaResponsableListaCodigosCodificada_3055);
+                cadena = unirElementos(":", _identificacionDeLaParte_C082.IdentificacionEntidadCodificada_3039,
+                                            _identificacionDeLaParte_C082.IdentificadorListaCodigosCodificado_1131,
+                                            _identificacionDeLaParte_C082.AgenciaResponsableListaCodigosCodificada_3055);
             }
 
             return "+" + cadena;
@@ -121,7 +100,7 @@ namespace EDI_Generator.Segments
 
         private string _C058_NombreDireccion()
         {
-            return "+" + _direccion_3124;
+            return "+" + _direccion3124;
         }
 
         private string _C080_NombreEntidad()

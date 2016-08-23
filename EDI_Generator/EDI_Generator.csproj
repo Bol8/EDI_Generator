@@ -62,6 +62,7 @@
     <Compile Include="Segments\AuxClass\IdentificacionTransporte.cs" />
     <Compile Include="Segments\AuxClass\IdentificadorDelMensaje.cs" />
     <Compile Include="Segments\AuxClass\IdentificadorDeSintaxis.cs" />
+    <Compile Include="Segments\AuxClass\ImporteMonetario.cs" />
     <Compile Include="Segments\AuxClass\IndicadorDeProceso.cs" />
     <Compile Include="Segments\AuxClass\InfoExcesoCargaTransporte.cs" />
     <Compile Include="Segments\AuxClass\InformacionMedidas.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="Segments\AuxClass\ModoTransporte.cs" />
     <Compile Include="Segments\AuxClass\PlazoEntrega.cs" />
     <Compile Include="Segments\AuxClass\ReceptorDelIntercambio.cs" />
+    <Compile Include="Segments\AuxClass\Referencia.cs" />
     <Compile Include="Segments\AuxClass\Transportista.cs" />
     <Compile Include="Segments\AuxClass\ValorAmplitud.cs" />
     <Compile Include="Segments\BGM.cs" />

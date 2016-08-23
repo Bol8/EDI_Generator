@@ -145,7 +145,7 @@ namespace EDI_Generator.EDI.Intrastat
 
         protected void montarRff(string numeroReferencia_1154)
         {
-            var Rff = new RFF(_calificadorReferencia_1153,numeroReferencia_1154,null,null);
+            var Rff = new RFF(new Referencia(_calificadorReferencia_1153, numeroReferencia_1154, null, null));
 
             Segmentos.Add(Rff);
             Mensaje += Rff.getSegmento();
@@ -174,7 +174,9 @@ namespace EDI_Generator.EDI.Intrastat
         {
             var Loc = new LOC(calificadorDeLugar_3227,
                               new IdentificacionLugar(identificacionLugar,null,null,null),
-                              null);
+                              null, null, null);
+                              
+                            
 
             Segmentos.Add(Loc);
             Mensaje += Loc.getSegmento();
@@ -205,7 +207,7 @@ namespace EDI_Generator.EDI.Intrastat
 
         protected void montarMoa(string calificadorTipoImporte_5025,string importeMonetario_5004 )
         {
-            var Moa = new MOA(calificadorTipoImporte_5025,importeMonetario_5004,_monedaCodificada,null,null);
+            var Moa = new MOA(new ImporteMonetario(calificadorTipoImporte_5025, importeMonetario_5004, _monedaCodificada, null, null));
 
             Segmentos.Add(Moa);
             Mensaje += Moa.getSegmento();

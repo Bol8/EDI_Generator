@@ -7,29 +7,33 @@ using EDI_Generator.Segments.AuxClass;
 
 namespace EDI_Generator.Segments
 {
-    internal class LOC:SegmentoEDI
+    internal class LOC : SegmentoEDI
     {
         private readonly string _calificadorLugar_3227;
 
         //C517 IDENTIFICACIÓN DE LUGAR
-        private readonly IdentificacionLugar _identificacionLugar;
+        private readonly IdentificacionLugar _identificacionLugar_C517;
 
         //C519 PRIMERA IDENTICACIÓN DE LUGAR
-        private IdentificacionLugar _primeraIdentificacionLugar;
+        private readonly IdentificacionLugar _primeraIdentificacionLugar_C519;
 
         //C553 SEGUNDA IDENTIFICACIÓN DE LUGAR
-        private IdentificacionLugar _segundaIdentificacionLugar;
+        private readonly IdentificacionLugar _segundaIdentificacionLugar_C553;
 
         private readonly string _relacionCodificado_5479;
 
 
 
-        public LOC(string calificadorLugar, IdentificacionLugar codigoIdentificacionAduanera, string relacionCodificado) 
+        public LOC(string calificadorLugar3227, IdentificacionLugar IdentificacionLugarC517,
+                   IdentificacionLugar primeraIdentificacionLugarC519, IdentificacionLugar segundaIdentificacionLugarC553,
+                   string relacionCodificado5479)
             : base("LOC")
         {
-            _calificadorLugar_3227 = calificadorLugar;
-            _identificacionLugar = codigoIdentificacionAduanera;
-            _relacionCodificado_5479 = relacionCodificado;
+            _calificadorLugar_3227 = calificadorLugar3227;
+            _identificacionLugar_C517 = IdentificacionLugarC517;
+            _primeraIdentificacionLugar_C519 = primeraIdentificacionLugarC519;
+            _segundaIdentificacionLugar_C553 = segundaIdentificacionLugarC553;
+            _relacionCodificado_5479 = relacionCodificado5479;
 
             Segmento = montaSegmento();
         }
@@ -41,12 +45,14 @@ namespace EDI_Generator.Segments
             return Segmento;
         }
 
-       
-        protected override string montaSegmento()
+
+        protected sealed override string montaSegmento()
         {
             var cadena = _idSEgmento;
             cadena += _3227_CalificadorLugar();
-            cadena += C517_IdentificacionLugar();
+            cadena += C517_IdentificacionLugar(_identificacionLugar_C517);
+            cadena += C517_IdentificacionLugar(_primeraIdentificacionLugar_C519);
+            cadena += C517_IdentificacionLugar(_segundaIdentificacionLugar_C553);
             cadena += _5479_RelacionCodificado();
             cadena += cerrarSegmento();
 
@@ -61,12 +67,17 @@ namespace EDI_Generator.Segments
         }
 
 
-        private string C517_IdentificacionLugar()
+        private string C517_IdentificacionLugar(IdentificacionLugar identificacionLugar)
         {
-            var cadena = unirElementos(":", _identificacionLugar.IdentificacionDeLugar,
-                                            _identificacionLugar.CalificadorListaCodigos,
-                                            _identificacionLugar.AgenciaResponsableListaCodigosCodificada,
-                                            _identificacionLugar.Lugar);
+            var cadena = "";
+
+            if (identificacionLugar != null)
+            {
+                cadena = unirElementos(":", identificacionLugar.IdentificacionDeLugar_3225,
+                                            identificacionLugar.CalificadorListaCodigos_1131,
+                                            identificacionLugar.AgenciaResponsableListaCodigosCodificada_3055,
+                                            identificacionLugar.Lugar_3224);
+            }
 
             return "+" + cadena;
         }

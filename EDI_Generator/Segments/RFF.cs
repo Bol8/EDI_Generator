@@ -3,31 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EDI_Generator.Segments.AuxClass;
 
 namespace EDI_Generator.Segments
 {
     internal class RFF:SegmentoEDI
     {
         //C506 REFERENCIA
-        private readonly string _calificadorReferencia_1153;
-        private readonly string _numeroReferencia_1154;
-        private readonly string _numeroLinea_1156;
-        private readonly string _numeroVersionReferencia_4000;
+        private readonly Referencia _referencia_C506;
 
-
-        public RFF(string calificadorReferencia,string numeroReferencia,string numeroLinea,string numeroVersionReferencia) 
+       
+        public RFF(Referencia referenciaC506) 
             : base("RFF")
         {
-            _calificadorReferencia_1153 = calificadorReferencia;
-            _numeroReferencia_1154 = numeroReferencia;
-            _numeroLinea_1156 = numeroLinea;
-            _numeroVersionReferencia_4000 = numeroVersionReferencia;
+            _referencia_C506 = referenciaC506;
 
             Segmento = montaSegmento();
         }
 
 
-        protected override string montaSegmento()
+        protected sealed override string montaSegmento()
         {
             var cadena = _idSEgmento;
             cadena += C506_Referencia();
@@ -39,8 +34,15 @@ namespace EDI_Generator.Segments
 
         private string C506_Referencia()
         {
-            var cadena = unirElementos(":", _calificadorReferencia_1153, _numeroReferencia_1154, _numeroLinea_1156,
-                _numeroVersionReferencia_4000);
+            var cadena = "";
+
+            if (_referencia_C506 != null)
+            {
+                cadena = unirElementos(":", _referencia_C506.CalificadorReferencia_1153,
+                                            _referencia_C506.NumeroReferencia_1154,
+                                            _referencia_C506.NumeroLinea_1156,
+                                            _referencia_C506.NumeroVersionDeLaReferencia_4000);
+            }
 
             return "+" + cadena;
         }
